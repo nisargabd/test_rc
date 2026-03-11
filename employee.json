@@ -1,0 +1,128 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "type": "object",
+    "properties": {
+        "Employee": {
+            "$ref": "#/definitions/Employee"
+        }
+    },
+    "required": [
+        "Employee"
+    ],
+    "title": "Employee",
+    "definitions": {
+        "Employee": {
+            "$id": "#/properties/Employee",
+            "type": "object",
+            "title": "The Employee Schema",
+            "required": [],
+            "properties": {
+                "identityDetails": {
+                    "type": "object",
+                    "title": "Identity Details",
+                    "properties": {
+                        "documentType": {
+                            "type": "string",
+                            "title": "Document Type"
+                        },
+                        "name": {
+                            "type": "string",
+                            "title": "Name"
+                        }
+                    }
+                },
+                "employmentDetails": {
+                    "type": "object",
+                    "title": "Employment Details",
+                    "properties": {
+                        "position": {
+                            "type": "string",
+                            "title": "Position"
+                        },
+                        "salary": {
+                            "type": "number",
+                            "title": "Salary"
+                        },
+                        "organizationalUnit": {
+                            "type": "string",
+                            "title": "Organizational Unit"
+                        },
+                        "institution": {
+                            "type": "string",
+                            "title": "Institution"
+                        },
+                        "status": {
+                            "type": "string",
+                            "title": "Status",
+                            "enum": [
+                                "active",
+                                "inactive"
+                            ]
+                        },
+                        "dateOfHire": {
+                            "type": "string",
+                            "title": "Date of Hire",
+                            "format": "date"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "_osConfig": {
+        "privateFields": [
+            "/employmentDetails/salary"
+        ],
+        "ownershipAttributes": [],
+        "roles": [
+            "admin",
+            "employee"
+        ],
+        "inviteRoles": [
+            "anonymous"
+        ],
+        "credentialTemplate": {
+            "@context": [
+                "https://www.w3.org/2018/credentials/v1",
+                {
+                    "@context": {
+                        "@version": 1.1,
+                        "@protected": true,
+                        "id": "@id",
+                        "schema": "https://schema.org/",
+                        "Employee": {
+                            "@id": "https://github.com/sunbird-specs/vc-specs#Employee",
+                            "@context": {
+                                "@version": 1.1,
+                                "@protected": true,
+                                "id": "@id",
+                                "documentType": "schema:Text",
+                                "name": "schema:Text",
+                                "position": "schema:Text",
+                                "organizationalUnit": "schema:Text",
+                                "institution": "schema:Text",
+                                "status": "schema:Text",
+                                "dateOfHire": "schema:Text"
+                            }
+                        }
+                    }
+                }
+            ],
+            "type": [
+                "VerifiableCredential"
+            ],
+            "issuanceDate": "2021-08-27T10:57:57.237Z",
+            "credentialSubject": {
+                "type": "Employee",
+                "documentType": "{{identityDetails.documentType}}",
+                "name": "{{identityDetails.name}}",
+                "position": "{{employmentDetails.position}}",
+                "organizationalUnit": "{{employmentDetails.organizationalUnit}}",
+                "institution": "{{employmentDetails.institution}}",
+                "status": "{{employmentDetails.status}}",
+                "dateOfHire": "{{employmentDetails.dateOfHire}}"
+            },
+            "issuer": "did:web:sunbirdrc.dev/vc/Employee"
+        }
+    }
+}
