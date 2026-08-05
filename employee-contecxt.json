@@ -1,0 +1,24 @@
+{
+    "@context": {
+        "@version": 1.1,
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+        "schema": "https://schema.org/",
+        "EmployeeCredential": {
+            "@id": "https://nisargabd.github.io/test_rc#EmployeeCredential",
+            "@context": {
+                "@version": 1.1,
+                "@protected": true,
+                "id": "@id",
+                "name": "schema:name",
+                "documentType": "schema:identifier",
+                "position": "schema:jobTitle",
+                "organizationalUnit": "schema:department",
+                "institution": "schema:worksFor",
+                "status": "schema:employmentType",
+                "dateOfHire": "schema:startDate"
+            }
+        }
+    }
+}
